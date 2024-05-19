@@ -71,13 +71,13 @@ const InfiniteEvents = () => {
 
   const getbase = async () =>{
     const resloc = await fetch(
-      'https://www.koledar.at/v1/locations?includeChildren=true&nofront=1',
+      'https://admin.koledar.at/v1/locations?includeChildren=true&nofront=1',
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;
 
     const resorga = await fetch(
-      'https://www.koledar.at/v1/organizers?offset=0&limit=200',
+      'https://admin.koledar.at/v1/organizers?offset=0&limit=200',
     );
     const dataorga = (await resorga.json()) as OrganizationsResponse;
     setOrganizations(dataorga.items) ;
@@ -94,7 +94,7 @@ const InfiniteEvents = () => {
         setLoading(true);
 
         const res = await fetch(
-          `https://www.koledar.at/v1/events?&offset=${3 * page}&from=2024-04-20&limit=3`,
+          `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-04-20&limit=3`,
         );
         
         const data = (await res.json()) as EventResponse;

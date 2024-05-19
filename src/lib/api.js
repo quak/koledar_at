@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 export async function getEventforSlug(eventkey) {
   
-    const response = await fetch("https://www.koledar.at/v1/events/"+eventkey,
+    const response = await fetch("https://admin.koledar.at/v1/events/"+eventkey,
     {
       method: 'GET',
       headers: {
@@ -24,7 +24,7 @@ export async function getEventforSlug(eventkey) {
 
 async function getAllLocations() {
   
-  const response = await fetch("https://www.koledar.at/v1/locations?includeChildren=true",
+  const response = await fetch("https://admin.koledar.at/v1/locations?includeChildren=true",
   {
     method: 'GET',
     headers: {
@@ -35,7 +35,7 @@ async function getAllLocations() {
 }
 
 async function getAllOrganizers() {
-  const response = await fetch('https://www.koledar.at/v1/organizers?offset=0&limit=200',
+  const response = await fetch('https://admin.koledar.at/v1/organizers?offset=0&limit=200',
   {
     method: 'GET',
     headers: {
@@ -46,7 +46,7 @@ async function getAllOrganizers() {
 }
 
 async function getEventsfromApi(limit) {
-  const response = await fetch('https://www.koledar.at/v1/events?limit='+limit+'&offset=0',
+  const response = await fetch('https://admin.koledar.at/v1/events?limit='+limit+'&offset=0',
   {
     method: 'GET',
     headers: {
@@ -58,7 +58,7 @@ async function getEventsfromApi(limit) {
 
 async function getEventsFromTo(from,to) {
     //https://koledar.at/v1/events?offset=0&from=2024-04-26&limit=20
-    const response = await fetch('https://www.koledar.at/v1/events?&offset=0&from='+from+'&to='+to+'&limit=30',
+    const response = await fetch('https://admin.koledar.at/v1/events?&offset=0&from='+from+'&to='+to+'&limit=30',
     {
         method: 'GET',
         headers: {
@@ -71,9 +71,9 @@ async function getEventsFromTo(from,to) {
 async function getEventsFromAndOffset(from,offset) {
     from = "2024-04-20";
     let limit=2;
-    console.log('https://www.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit);
+    console.log('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit);
     //https://koledar.at/v1/events?offset=0&from=2024-04-26&limit=20
-    const response = await fetch('https://www.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,
+    const response = await fetch('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,
     {
         method: 'GET',
         headers: {

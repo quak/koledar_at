@@ -29,7 +29,7 @@ export function Catselect() {
   const [locations, setLocations] = React.useState<Locations[]>([]);
   const getbase = async () =>{
     const resloc = await fetch(
-      'https://www.koledar.at/v1/categories?includeChildren=false&offset=0&limit=200',
+      'https://admin.koledar.at/v1/categories?includeChildren=false&offset=0&limit=200',
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;

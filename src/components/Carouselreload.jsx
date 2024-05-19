@@ -23,7 +23,7 @@ export default function Carouselreload(args) {
 	let from = "2024-04-20";
 	let limit = 2;
 	
-	const { isLoading, data, error } = useFetch('https://www.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit);
+	const { isLoading, data, error } = useFetch('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit);
 
 	let datax = [];
 	try {
@@ -50,7 +50,7 @@ export default function Carouselreload(args) {
 				let from = "2024-04-20";
 				let limit = 2;
 
-				const response = await fetch('https://www.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,requestOptions);
+				const response = await fetch('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,requestOptions);
 				
 				const data = await response.json();
 				
