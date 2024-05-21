@@ -23,6 +23,9 @@ interface Locations {
   title_sl: string;
   venue: string;
   location: string;
+  location_key: string;
+  name_sl: string;
+  name_de: string;
 }
  
 export function Catselect() {
@@ -43,16 +46,16 @@ export function Catselect() {
   }
  
   return (
-    <Select className="bg-white">
+    <Select>
       <SelectTrigger className="">
         <SelectValue placeholder="Kategorija" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup> 
-        {locations.map(function (loc,i) {
-					console.log(loc);
+        {locations.map(function (location,i) {
+					
 					return(
-            <SelectItem value={loc.location_key}>{loc.name_sl}</SelectItem>
+            <SelectItem value={location.location_key}>{location.name_sl}</SelectItem>
             
           )}
         )}

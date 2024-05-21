@@ -60,9 +60,9 @@ export default function Eventcardday({ className, ...props }: CardProps) {
               <span className="text-2xl font-medium text-white font-serif">{event.datedm}</span>
             </span>
           </div>
-          <div class="flex gap-2 justify-between items-center w-full">
-            <div class="flex flex-col">
-              <span class="flex gap-4">
+          <div className="flex gap-2 justify-between items-center w-full">
+            <div className="flex flex-col">
+              <span className="flex gap-4">
                 <span className="text-3xl font-bold text-kkred font-serif ">{event.starting_at}</span>
                 <p className=" text-3xl uppercase text-kkred font-serif inline-block">{event.loc.name_sl}</p>
               </span>
@@ -72,9 +72,9 @@ export default function Eventcardday({ className, ...props }: CardProps) {
             
             
               
-              <span class=" kkwide text-black font-light font-sans text-3xl right-0 flex items-center top-12">
-                <span class="inline-block">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
+              <span className=" kkwide text-black font-light font-sans text-3xl right-0 flex items-center top-12">
+                <span className="inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-chevron-double-right" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
                     <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708"/>
                   </svg>
