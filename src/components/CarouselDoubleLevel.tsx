@@ -10,6 +10,14 @@ import {
 } from "@/components/ui/carousel"
 import Eventcard from "@/components/Eventcard"
 
+interface Event {  
+  event_key: string;
+  title_de: string;
+  title_sl: string;
+  venue: string;
+  location: string;
+}
+
 import { getUpcommingThisWeek } from '../lib/api'
 let events = await getUpcommingThisWeek();
 
