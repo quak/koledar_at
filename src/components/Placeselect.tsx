@@ -23,6 +23,8 @@ interface Locations {
   title_sl: string;
   venue: string;
   location: string;
+  location_key: string;
+  name_sl: string;
 }
  
 export function Placeselect() {
@@ -33,7 +35,7 @@ export function Placeselect() {
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;
-    console.log(locations)
+
 
   };
 
@@ -43,16 +45,16 @@ export function Placeselect() {
   }
  
   return (
-    <Select className="bg-white">
+    <Select>
       <SelectTrigger className="">
         <SelectValue placeholder="Kraj" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
         {locations.map(function (loc,i) {
-					console.log(loc);
+			
 					return(
-            <SelectItem value={loc.location_key}>{loc.name_sl}</SelectItem>
+            <SelectItem value={loc.location_key} key={i} >{loc.name_sl}</SelectItem>
           )}
         )}
        

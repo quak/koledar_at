@@ -12,7 +12,41 @@ import {
  
 type CardProps = React.ComponentProps<typeof Card>
 
-export default function Eventcard({ className, ...props }: CardProps) {
+type Event = {  
+  event_key: string;
+  title_de: string;
+  title_sl: string;
+  venue: string;
+  location: string;
+  datedm: string;
+  starting_at: string;
+  image_landscape_thumbnail: string;
+  image_portrait: string;
+  image_portrait_thumbnail: string;
+  daytext: string;
+  loc: Locations;
+}
+
+type TcardProps = {
+  event: Event
+  colortheme: string
+  className: string
+  
+};
+
+type Locations = {  
+  event_key: string;
+  title_de: string;
+  title_sl: string;
+  venue: string;
+  location: string;
+  venuename_sl: string;
+  name_sl: string;
+
+}
+
+
+export default function Eventcard({ className, ...props }: TcardProps) {
   let event = props.event;
   let colortheme = props.colortheme;
   

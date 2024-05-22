@@ -27,21 +27,31 @@ interface OrganizationsResponse {
   limit: number;
 }
 
-interface Event {  
+type Event = {  
   event_key: string;
   title_de: string;
   title_sl: string;
   venue: string;
   location: string;
+  datedm: string;
+  starting_at: string;
+  image_landscape_thumbnail: string;
+  image_portrait: string;
+  image_portrait_thumbnail: string;
+  daytext: string;
+  loc: Locations;
 }
 
 
-interface Locations {  
+type Locations = {  
   event_key: string;
   title_de: string;
   title_sl: string;
   venue: string;
   location: string;
+  venuename_sl: string;
+  name_sl: string;
+
 }
 
 interface Organizations {  
@@ -55,7 +65,7 @@ interface Organizations {
 const Event = ({ event }: { event: Event }) => {
   
   return (
-    <Eventcard event={event}  colortheme="orange"></Eventcard>
+    <Eventcard event={event}  colortheme="orange" className='eventcarditem'></Eventcard>
   );
 };
 
@@ -179,27 +189,29 @@ const InfiniteEvents = () => {
         let actdate = new Date(event.starting_on);
         let enddate = new Date(event.ending_on);
         
-        if(enddate!="Invalid Date"){
+        if(!isNaN(enddate.getDay())){
             event.enddate = enddate.toLocaleDateString();
             event.enddate = event.enddate.replaceAll("/", ".");
         }
 
         let enddaynumber = enddate.getDate();
+        let enddaynumberstring ="";
         if(enddaynumber.toString().length==1){
-            enddaynumber = "0"+enddaynumber;
+          enddaynumberstring = "0"+enddaynumber;
         }
         event.endday = enddaynumber
 
         let daynumber = actdate.getDate();
+        let daynumberstring ="";
         
         if(daynumber.toString().length==1){
-            daynumber = "0"+daynumber;
+          daynumberstring = "0"+daynumber;
         }
         event.day = daynumber
 
         let endyear = enddate.getFullYear();
         let year = actdate.getFullYear();
-        let ddetail = daynumber+"."+(actdate.getMonth()+1)+"."+year;
+        let ddetail = daynumberstring+"."+(actdate.getMonth()+1)+"."+year;
         
         if(enddaynumber){
             ddetail= ddetail +" - "+ enddaynumber+"."+(enddate.getMonth()+1)+"."+endyear

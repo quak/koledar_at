@@ -36,7 +36,7 @@ export function Catselect() {
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;
-    console.log(locations)
+    
 
   };
 
@@ -55,7 +55,7 @@ export function Catselect() {
         {locations.map(function (location,i) {
 					
 					return(
-            <SelectItem value={location.location_key}>{location.name_sl}</SelectItem>
+            <SelectItem value={location.location_key} key={i} >{location.name_sl}</SelectItem>
             
           )}
         )}

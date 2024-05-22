@@ -55,7 +55,7 @@ export default function Carouselreload(args) {
 				const data = await response.json();
 				
 				setItems(prevItems => [...prevItems, ...data]);
-				console.log(data);
+				
 				setPage(prevPage => prevPage + 1);
 			} catch (error) {
 				setError(error);
@@ -68,7 +68,6 @@ export default function Carouselreload(args) {
 	/** */
 
 	const handleScroll = () => {
-console.log("handlescroll");
 		if (window.innerHeight + document.documentElement.scrollTop + document.getElementById("footer").offsetHeight > document.documentElement.offsetHeight || isLoading) {
 		  return;
 		}
@@ -84,7 +83,6 @@ console.log("handlescroll");
 
 	/** */
 	let llstyle = "lazy"
-	console.log(datax);
 
 	return (
 		
@@ -94,7 +92,7 @@ console.log("handlescroll");
 				<Carousel className="w-full">
 				<CarouselContent className="-ml-1">
 				{datax?.items?.map(function (event,i) {
-					console.log(event);
+					
 					return(
 						<CarouselItem key={i} className="pl-1 md:basis-1/2 lg:basis-1/3">
 							<a href="/prireditev/undefined" className="block  mt-4 block" key={i} >

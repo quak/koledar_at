@@ -9,9 +9,39 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
  
+type Locations = {  
+  event_key: string;
+  title_de: string;
+  title_sl: string;
+  venue: string;
+  location: string;
+  venuename_sl: string;
+  name_sl: string;
+
+}
+
+type Event = {  
+  event_key: string;
+  title_de: string;
+  title_sl: string;
+  venue: string;
+  location: string;
+  datedm: string;
+  starting_at: string;
+  image_landscape_thumbnail: string;
+  image_portrait: string;
+  image_portrait_thumbnail: string;
+  daytext: string;
+  loc: Locations;
+}
+
+type ApiResponse = {
+  eventssl: Event[],
+  eventsat: Event[]
+}
 
 import { getAfterThisWeek } from '../lib/api'
-let events = await getAfterThisWeek();
+let events = await getAfterThisWeek()  as any;;
 
 let eventssl = events.eventssl;
 

@@ -71,7 +71,7 @@ async function getEventsFromTo(from,to) {
 async function getEventsFromAndOffset(from,offset) {
     from = "2024-04-20";
     let limit=2;
-    console.log('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit);
+    
     //https://koledar.at/v1/events?offset=0&from=2024-04-26&limit=20
     const response = await fetch('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,
     {

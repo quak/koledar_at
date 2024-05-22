@@ -12,8 +12,7 @@ const eventdata = await getEventforSlug(event);
 
 
 const address = "Kaernten," +eventdata?.loc?.name_de+" , " +eventdata?.loc?.venuename_de;
-console.log(event);
-console.log(address);
+
 //const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.post_title+"&details=Event description text&dates=20220305T103000/20220305T184500&location=New York City";
 const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+eventdata.title_sl+"&details="+eventdata.excerpt+"&dates="+eventdata.starting_at+"&location="+address;
 const icallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+eventdata.title_sl+"&details="+eventdata.excerpt+"&dates="+eventdata.starting_at+"&location="+address;
