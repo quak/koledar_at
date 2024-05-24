@@ -9,6 +9,7 @@ import InfiniteEvents from '@/components/InfiniteEvents';
 
 
 const search = Astro.url.searchParams.get('searchword') || '';
+const place = Astro.url.searchParams.get('place') || '';
 
 ---
 
@@ -21,8 +22,8 @@ const search = Astro.url.searchParams.get('searchword') || '';
 		
 		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
 			<!-- Content goes here -->
-			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Rezultati za {search}</h2>
-			<InfiniteEvents client:load searchword={search} place=""></InfiniteEvents>
+			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Rezultati</h2>
+			<InfiniteEvents client:load searchword={search} place={place}></InfiniteEvents>
 			
 		</div>
 

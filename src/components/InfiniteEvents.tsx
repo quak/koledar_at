@@ -107,6 +107,11 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
         setLoading(true);
         let res: any = "";
 
+        if(searchword !== "" && place !== ""){
+          res = await fetch(
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&locations=${place}`,
+          );
+        }else
         if(searchword !== ""){
           res = await fetch(
             `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}`,
@@ -117,7 +122,7 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
           );
         }else{
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-05-24&limit=3`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-05-27&limit=3`,
           );
         }
 

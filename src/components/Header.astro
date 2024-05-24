@@ -21,18 +21,21 @@ import { Searchfield } from '@/components/Searchfield';
     <div  class="col-span-1 md:col-span-1 order-1 md:order-2 flex justify-center mb-4"><img src="/logokk.png"/></div>
     <div class="grow  col-span-1 order-3">
       <div class="flex flex-col px-4 gap-4">
+        <form action="/search" method="get">
         <div class="block">
-          <form action="/search" method="get">
+          
             <Searchfield/>
-          </form>
+          
          
         </div>
-        <div class="block  ">
-          <form action="/place" method="get">
+        <div class="block mt-2 ">
+         
             <Placeselect  client:load/>
-            <input type="submit" value="Submit">
-          </form>
+            
+            <button id="button" type="submit" class="bg-kkred shadow-xl hover:bg-kkred text-white  rounded-full py-1 px-2 w-full mt-4 uppercase">Išči</button>
+          
         </div>
+        </form>
       </div>
     </div>
   </nav>
