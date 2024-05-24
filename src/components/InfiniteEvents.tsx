@@ -109,16 +109,16 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
 
         if(searchword !== "" && place !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&locations=${place}`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&locations=${place}&from=2024-01-01&to=2024-05-24`,
           );
         }else
         if(searchword !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&from=2024-01-01&to=2024-05-24`,
           );
         }else if(place !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&locations=${place}`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&locations=${place}&from=2024-01-01&to=2024-05-24`,
           );
         }else{
           res = await fetch(

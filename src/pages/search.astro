@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import { CarouselDoubleLevel } from '@/components/CarouselDoubleLevel';
-import { Eventgrid } from '@/components/Eventgrid';
+import  Eventgrid from '@/components/Eventgrid';
 import '../styles/global.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import InfiniteEvents from '@/components/InfiniteEvents';
@@ -22,7 +22,14 @@ const place = Astro.url.searchParams.get('place') || '';
 		
 		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
 			<!-- Content goes here -->
-			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Rezultati</h2>
+			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Bodoče prireditve</h2>
+			<Eventgrid client:load searchword={search} place={place}></Eventgrid>
+
+		</div>
+
+		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
+			<!-- Content goes here -->
+			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Pretekle prireditve</h2>
 			<InfiniteEvents client:load searchword={search} place={place}></InfiniteEvents>
 			
 		</div>

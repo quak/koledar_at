@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import { CarouselOneLevel } from '@/components/CarouselOneLevel';
-import { Eventgrid } from '@/components/Eventgrid';
+import Eventgrid from '@/components/Eventgrid';
 import '../styles/global.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import InfiniteEvents from '@/components/InfiniteEvents';
@@ -17,7 +17,13 @@ import InfiniteEvents from '@/components/InfiniteEvents';
 	
 	
 	<main>
-		<Eventgrid></Eventgrid>
+		
+		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
+			<!-- Content goes here -->
+			<h2 id="today" class="hyphens-auto text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">danes</h2>
+			<Eventgrid client:load searchword="" place=""></Eventgrid>
+
+		</div>
 		
 		<CarouselOneLevel client:load></CarouselOneLevel>
 
