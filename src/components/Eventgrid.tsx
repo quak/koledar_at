@@ -39,19 +39,27 @@ type ApiResponse = {
 import { getEventsForToday } from '../lib/api'
 import Eventcardday from "./Eventcardday";
 const events = await getEventsForToday() as any;
-console.log("events EVENTGRID");
-console.log(events);
+
 let eventssl = events.eventssl; 
 
  
 export function Eventgrid() {
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="mt-4">
+    {eventssl.length!=0 && (
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 mb-32">
+        
+        <h2 id="today" className="hyphens-auto text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">danes</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-        {eventssl.map((event, index) => (
-            <Eventcardday event={event}  colortheme="orange" className="test"></Eventcardday>
-        ))}
-      
+            {eventssl.map((event, index) => (
+                <Eventcardday event={event}  colortheme="orange" className="test" key={index}></Eventcardday>
+            ))}
+          
+        </div>
+        
+      </div>)
+    }
     </div>
     
   )

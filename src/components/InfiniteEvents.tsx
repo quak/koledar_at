@@ -62,6 +62,7 @@ interface Organizations {
   location: string;
 }
 
+
 const Event = ({ event }: { event: Event }) => {
   
   return (
@@ -69,7 +70,8 @@ const Event = ({ event }: { event: Event }) => {
   );
 };
 
-const InfiniteEvents = () => {
+//const InfiniteEvents = (props) => {
+function InfiniteEvents({ searchword,place }: { searchword: string,place:string }) {
   const [page, setPage] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
   const [hasMore, setHasMore] = React.useState(true);
@@ -77,11 +79,11 @@ const InfiniteEvents = () => {
   const [locations, setLocations] = React.useState<Locations[]>([]);
   const [organizations, setOrganizations] = React.useState<Organizations[]>([]);
 
-
+  const [pro, setPro] = React.useState(false)
 
   const getbase = async () =>{
     const resloc = await fetch(
-      'https://admin.koledar.at/v1/locations?includeChildren=true&nofront=1',
+      'https://admin.koledar.at/v1/locations?includeChildren=true&nofront=1&limit=200',
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;
@@ -93,6 +95,7 @@ const InfiniteEvents = () => {
     setOrganizations(dataorga.items) ;
   };
 
+
   
   if (locations.length == 0) {
     getbase();
@@ -102,13 +105,27 @@ const InfiniteEvents = () => {
     const next = async () => {
       if (locations.length != 0) {
         setLoading(true);
+        let res: any = "";
 
-        const res = await fetch(
-          `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-04-20&limit=3`,
-        );
+        if(searchword !== ""){
+          res = await fetch(
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}`,
+          );
+        }else if(place !== ""){
+          res = await fetch(
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&locations=${place}`,
+          );
+        }else{
+          res = await fetch(
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-05-24&limit=3`,
+          );
+        }
+
+       
         
         const data = (await res.json()) as EventResponse;
         const datae = enhanceData(data.items,locations,organizations);
+        console.log(datae);
         
         setEvents((prev) => [...prev, ...datae["evsl"]]);
         setPage((prev) => prev + 1);
@@ -122,7 +139,8 @@ const InfiniteEvents = () => {
     };
   
   return (
-    <div className=" w-full overflow-y-auto px-4">
+    
+    <div className=" w-full overflow-hidden px-4">
       <div className="grid grid-col-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {events.map((event,i) => (
           <Event key={i} event={event} />
@@ -158,7 +176,6 @@ const InfiniteEvents = () => {
     return ret;
   }
   
-  
   function getOrgas(orgs,kkorganizers) {
    
     let ret = new Array();
@@ -174,8 +191,6 @@ const InfiniteEvents = () => {
     
     return ret;
   }
-  
-
   
   function enhanceData(events,kklocations,kkorganizers){
 
@@ -285,10 +300,6 @@ const InfiniteEvents = () => {
 
     return kke;
   }
-
-  
-
-  
 
 };
 

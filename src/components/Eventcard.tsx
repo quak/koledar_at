@@ -42,7 +42,6 @@ type Locations = {
   location: string;
   venuename_sl: string;
   name_sl: string;
-
 }
 
 
@@ -60,14 +59,14 @@ export default function Eventcard({ className, ...props }: TcardProps) {
   }
 
   return (
-    <a href={url} className="  mt-4 block border-0 border-b-2 border-kkrose"  >
+    <a href={url} className=" block border-0 border-b-2 border-kkrose h-full"  >
     <Card className="border-0">
       
     
       <CardHeader>
         
         <div className="flex flex-row gap-6">
-          <div className="basis-1/5 ">
+          <div className=" ">
             <div className="w-18 aspect-square flex justify-center align-center">
               <span className={`flex flex-col items-center rounded-2xl aspect-square justify-center `+ colorclass} >
                 <span className="text-base uppercase tracking-widest uppercase  text-white font-serif ">{event.daytext}</span>
@@ -75,9 +74,9 @@ export default function Eventcard({ className, ...props }: TcardProps) {
               </span>
             </div>
           </div>
-          <div className="basis-4/5">
+          <div className="">
             <span className="mb-4 block">
-              <CardTitle className=" min-h-44 font-sans font-bold text-4xl line-clamp-5">{event.title_sl}</CardTitle>
+              <CardTitle className=" break-all hyphens-auto break-words min-h-20 md:min-h-44 font-sans font-bold text-2xl md:text-4xl line-clamp-5">{event.title_sl}</CardTitle>
             </span>
           </div>
         </div>

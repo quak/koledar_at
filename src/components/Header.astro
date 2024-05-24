@@ -7,25 +7,31 @@ import { Searchfield } from '@/components/Searchfield';
 ---
 <header class="bg-kklightyellow">
   <h1 class="text-center uppercase text-3xl text-kkred my-4">prireditveni koledar koroških slovencev</h1>
-  <nav class="mx-auto flex max-w-5xl items-center justify-between px-6  pb-6 lg:px-8" aria-label="Global">
-    <div class="grow flex flex-col px-4 gap-4">
-      <div class="grid grid-cols-2 gap-4">
+  <nav class="mx-auto grid grid-cols-1 md:grid-cols-3 max-w-5xl items-center justify-between px-6  pb-6 lg:px-8" aria-label="Global">
+    <div class="grow flex flex-col px-4 gap-4 col-span-1 order-2 md:order-1 mb-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <a href="/#today" class="bg-kklorange font-sans uppercase text-xl px-2 py-0 col-span-1 text-center" >Danes</a>
         <a href="/#thisweek" class="bg-kklorange font-sans uppercase text-xl px-2 py-0 col-span-1 text-center" >Ta teden</a>
         
       </div>
-      <div>
+      <div class="hidden">
         <Catselect  client:load/>
       </div>
     </div>
-    <div><img src="/logokk.png"/></div>
-    <div class="grow">
+    <div  class="col-span-1 md:col-span-1 order-1 md:order-2 flex justify-center mb-4"><img src="/logokk.png"/></div>
+    <div class="grow  col-span-1 order-3">
       <div class="flex flex-col px-4 gap-4">
         <div class="block">
-          <Searchfield/>
+          <form action="/search" method="get">
+            <Searchfield/>
+          </form>
+         
         </div>
-        <div class="block">
-          <Placeselect  client:load/>
+        <div class="block  ">
+          <form action="/place" method="get">
+            <Placeselect  client:load/>
+            <input type="submit" value="Submit">
+          </form>
         </div>
       </div>
     </div>

@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import { CarouselOneLevel } from '@/components/CarouselOneLevel';
+import { CarouselDoubleLevel } from '@/components/CarouselDoubleLevel';
 import { Eventgrid } from '@/components/Eventgrid';
 import '../styles/global.css';
 import { ModeToggle } from '@/components/ModeToggle';
 import InfiniteEvents from '@/components/InfiniteEvents';
 
+
+const search = Astro.url.searchParams.get('searchword') || '';
 
 ---
 
@@ -14,17 +16,14 @@ import InfiniteEvents from '@/components/InfiniteEvents';
 
 <Layout title="PRIREDITVENI   KOLEDAR   KOROŠKIH SLOVENCEV">
 	<Header></Header>
-	
+	<ModeToggle client:load />
 	
 	<main>
-		<Eventgrid></Eventgrid>
 		
-		<CarouselOneLevel client:load></CarouselOneLevel>
-
 		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
 			<!-- Content goes here -->
-			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Druge prireditve</h2>
-			<InfiniteEvents client:load searchword="" place=""></InfiniteEvents>
+			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Rezultati za {search}</h2>
+			<InfiniteEvents client:load searchword={search} place=""></InfiniteEvents>
 			
 		</div>
 

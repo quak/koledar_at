@@ -94,7 +94,7 @@ export default function Carouselreload(args) {
 				{datax?.items?.map(function (event,i) {
 					
 					return(
-						<CarouselItem key={i} className="pl-1 md:basis-1/2 lg:basis-1/3">
+						<CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
 							<a href="/prireditev/undefined" className="block  mt-4 block" key={i} >
 								<Card>
 									

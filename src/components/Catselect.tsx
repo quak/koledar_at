@@ -46,21 +46,20 @@ export function Catselect() {
   }
  
   return (
-    <Select>
+    <Select defaultValue="default">
       <SelectTrigger className="">
-        <SelectValue placeholder="Kategorija" />
+        <SelectValue placeholder=""/>
       </SelectTrigger>
+      
       <SelectContent>
-        <SelectGroup> 
-        {locations.map(function (location,i) {
-					
+        <SelectItem value="default"  key="11">Default</SelectItem>
+        {locations.map(function (loc,i) {
+			
 					return(
-            <SelectItem value={location.location_key} key={i} >{location.name_sl}</SelectItem>
-            
+            <SelectItem value={loc.location_key} key={i}>{loc.name_sl}</SelectItem>
           )}
         )}
        
-        </SelectGroup>
         
       </SelectContent>
     </Select>

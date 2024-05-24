@@ -1,5 +1,5 @@
 import * as React from "react"
-
+import { useForm } from "react-hook-form"
 import {
   Select,
   SelectContent,
@@ -9,6 +9,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+
+import { Button } from "@/components/ui/button"
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form"
 
 interface LocationResponse {
   items: Locations[];
@@ -45,22 +56,25 @@ export function Placeselect() {
   }
  
   return (
-    <Select>
-      <SelectTrigger className="">
+
+
+
+    <Select name="place">
+      <SelectTrigger className="" name="place">
         <SelectValue placeholder="Kraj" />
       </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
+      <SelectContent className="bg-white">
+
         {locations.map(function (loc,i) {
-			
 					return(
-            <SelectItem value={loc.location_key} key={i} >{loc.name_sl}</SelectItem>
+            <SelectItem value={loc.location_key} key={i}>{loc.name_sl}</SelectItem>
           )}
         )}
        
-        </SelectGroup>
         
       </SelectContent>
     </Select>
   )
+  
+
 }

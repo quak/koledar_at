@@ -24,7 +24,7 @@ export async function getEventforSlug(eventkey) {
 
 async function getAllLocations() {
   
-  const response = await fetch("https://admin.koledar.at/v1/locations?includeChildren=true",
+  const response = await fetch("https://admin.koledar.at/v1/locations?includeChildren=true&limit=200",
   {
     method: 'GET',
     headers: {
@@ -145,8 +145,8 @@ export async function getUpcommingThisWeek() {
 
     let evsl = ed["evsl"];
     let evat = ed["evat"];
-
-    const chunkSize = 2;
+/*
+    const chunkSize = 1;
     var chunksl = new Array;
     var chunkat = new Array;
     for (let i = 0; i < evsl.length; i += chunkSize) {
@@ -157,10 +157,10 @@ export async function getUpcommingThisWeek() {
     }
     
     let eventssl = chunksl;
-    let eventsat = chunkat;
+    let eventsat = chunkat;*/
     let retevents = [];
-    retevents["eventssl"] = eventssl;
-    retevents["eventsat"] = eventsat;
+    retevents["eventssl"] = evsl;//eventssl;
+    retevents["eventsat"] = evat;//eventsat;
     
     return retevents;
 }

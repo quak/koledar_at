@@ -52,28 +52,39 @@ const events= await getUpcommingThisWeek() as any;
 //let events = await getUpcommingThisWeek();
 
 let eventssl = events.eventssl;
-console.log(eventssl);
+
 
 export function CarouselDoubleLevel() {
   return (
-    <Carousel className="w-full">
-      <CarouselContent className="-ml-1 ">
 
-        {eventssl.map((eventdouble, index) => (
-          <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
-            
-            {eventdouble.map((event, i) => (
-        
-              <Eventcard event={event} colortheme="green" className="eventcarditem"  key={i}></Eventcard>
-            
-            ))}    
+		
+		<div>
+    {eventssl.length!=0 && (
+      <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
+			<h2 id="thisweek" className="hyphens-auto text-kkred text-xl md:text-5xl text-center uppercase font-light  mb-12">Ta teden</h2>
+			<Carousel className="w-full">
+        <CarouselContent className="-ml-1 ">
 
-          </CarouselItem>
-        ))}
+          {eventssl.map((eventdouble, index) => (
+            <CarouselItem key={index} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              
+              {eventdouble.map((event, i) => (
+          
+                <Eventcard event={event} colortheme="green" className="eventcarditem"  key={i}></Eventcard>
+              
+              ))}    
 
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+            </CarouselItem>
+          ))}
+
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+      </div>
+    )}
+		</div>
+
+    
   )
 }

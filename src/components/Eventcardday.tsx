@@ -101,9 +101,6 @@ export default function Eventcardday({ className, ...props }: TcardProps) {
               </span>
               <span><p className="text-2xl text-kkorange font-serif ">{event.loc.venuename_sl}</p></span>
             </div>
-            
-            
-            
               
               <span className=" kkwide text-black font-light font-sans text-3xl right-0 flex items-center top-12">
                 <span className="inline-block">
