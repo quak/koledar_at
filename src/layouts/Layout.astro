@@ -21,7 +21,7 @@ const { title } = Astro.props;
 		<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 		
 	</head>
-	<body class="bg-kklight">
+	<body class="bg-kklight overflow-hidden">
 		<slot />
 	</body>
 </html>
@@ -44,7 +44,7 @@ const { title } = Astro.props;
 		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
 			return localStorage.getItem('theme');
 		}
-		return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		return window.matchMedia('(prefers-color-scheme: light)').matches ? 'dark' : 'light';
 	};
 	const isDark = getThemePreference() === 'dark';
 	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
