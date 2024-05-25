@@ -100,7 +100,7 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
   return (
     <div >
     {events.length!=0 && (
-     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
             {events.map((event, index) => (
                 <Eventcardday event={event} colortheme="orange" className="test" key={index}></Eventcardday>
