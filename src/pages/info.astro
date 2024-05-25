@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import { CarouselDoubleLevel } from '@/components/CarouselDoubleLevel';
+import  Eventgrid from '@/components/Eventgrid';
+import '../styles/global.css';
+import { ModeToggle } from '@/components/ModeToggle';
+import InfiniteEvents from '@/components/InfiniteEvents';
+
+
+const search = Astro.url.searchParams.get('searchword') || '';
+const place = Astro.url.searchParams.get('place') || '';
+
+---
+
+ 
+
+<Layout title="PRIREDITVENI   KOLEDAR   KOROŠKIH SLOVENCEV">
+	<Header></Header>
+	
+	<main>
+		
+		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
+			<h2 class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Informacije</h2>
+			<span class="font-bold text-xl mb-4 text-center block">Koroški koledar je skupen projekt:</span>
+			<span class="flex justify-around align-center">
+				<a href="https://spz.slo.at/" target="_blank">
+					<img class="h-32 w-auto" src="/spzlogo.png"/>
+				</a>
+				<a href="https://www.kkz.at/home_sl/" target="_blank">
+					<img class="h-20 w-auto" src="/kkzlogo.gif"/>
+				</a>
+			</span>
+			<span class="font-bold text-xl mb-4 text-center block">Tehnična realizacija</span>
+			<span class="flex justify-around align-center">
+				<a href="https://spz.slo.at/" target="_blank">
+					Nikola Toljić
+				</a>
+				<a href="https://www.kkz.at/home_sl/" target="_blank">
+					Ilab
+				</a>
+				<a href="https://www.kkz.at/home_sl/" target="_blank">
+					Augustin Malle
+				</a>
+			</span>
+			<h2 class="text-kkred text-3xl md:text-5xl text-center uppercase font-light my-12">Kolofon</h2>
+			<div class="flex gap-8 flex-wrap justify-center">
+				<div>
+					<h3 class="font-bold">Slovenska prosvetna zveza / Slowenischer Kulturverband</h3>
+					<p>Gabelsbergerstr. 5/2</p>
+					<p>9020 Klagenfurt/Celovec</p>
+					<p>ZVR-Zahl: 793084897, LPD Klagenfurt</p>
+					<p>Tel.: 0463/51 43 00 – 22</p>
+					<a href="mailto:spz@slo.at">e-mail: spz@slo.at</a>
+				</div>
+				<div>
+					<h3 class="font-bold">Krščanska kulturna zveza | Christlicher Kulturverband</h3>
+					<p>Viktringer Ring 26/3,</p>
+					<p>9020 Klagenfurt/Celovec</p>
+					<p>tel.: 0 463/51 62 43,</p>
+					<p>faks: 0 463/50 23 79</p>
+					<a href="mailto:office@kkz.at">e-mail: office@kkz.at</a>
+				</div>
+				
+			</div>
+		</div>
+
+		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32 hidden">
+			<h2 class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Implementacija vtičnika</h2>
+		</div>
+
+		<div class="mx-auto max-w-5xl sm:px-6 lg:px-8 my-8 mb-32 hidden">
+			<ul role="list" class="divide-y divide-gray-100">
+				<li class="flex justify-between gap-x-6 py-5">
+				  <div class="flex min-w-0 gap-x-4">
+					<span>1.</span>
+					<div class="min-w-0 flex-auto">
+					  <p class="text-xl font-semibold leading-6 text-gray-900">Korak</p>
+					  <p class="mt-1 truncate text-lg leading-5 text-gray-500">Vključi javascript koroškega koledarja v footer tvoje spletne strani</p>
+					</div>
+				  </div>
+				  <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+					<p class="text-sm leading-6 text-gray-900"> URL:.... </p>
+				  </div>
+				</li>
+				<li class="flex justify-between gap-x-6 py-5">
+					<div class="flex min-w-0 gap-x-4">
+					  <span>2.</span>
+					  <div class="min-w-0 flex-auto">
+						<p class="text-xl font-semibold leading-6 text-gray-900">Korak</p>
+						<p class="mt-1 truncate text-lg leading-5 text-gray-500">Vključi div-tag na mesto na katerem hočeš vključit koledar</p>
+					  </div>
+					</div>
+					<div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
+					  <p class="text-sm leading-6 text-gray-900"> 
+						<pre>
+							<div style="padding: 2rem;" id="slogkoledarapp" kk-data-amount="6"  kk-style="list"></div> 
+						</pre>
+					  </p>
+					</div>
+				  </li>
+			</ul>
+			<ul role="list" class="divide-y divide-gray-100 px-4">
+				<li class="flex flex-wrap flex-col sm:flex-row justify-between gap-x-6 py-5">
+					<div class="flex min-w-0 gap-x-4">						
+						<div class="min-w-0 flex-auto">
+							<p class="text-base font-semibold leading-6 text-gray-900">kk-style</p>
+							<p class="mt-1 truncate text-base leading-5 text-gray-500">Opcije: <span class="font-bold">list</span>,carousel,pro</p>
+							<p class="mt-1 truncate text-base leading-5 text-gray-500">primer: kk-style="list"</p>
+						</div>
+					</div>
+					<div class=" shrink-0 flex-col sm:items-end mt-4 sm:mt-0">
+						<p class="text-base leading-6 text-gray-900">Glavna opcija za prikaz vtičnika. </p>
+					</div>
+				</li>
+				<li class="flex flex-wrap flex-col sm:flex-row justify-between gap-x-6 py-5">
+					<div class="flex min-w-0 gap-x-4">						
+						<div class="min-w-0 flex-auto">
+							<p class="text-base font-semibold leading-6 text-gray-900">kkc-schema</p>
+							<p class="mt-1 truncate text-base leading-5 text-gray-500">Opcije: dark,<span class="font-bold">light</span></p>
+							<p class="mt-1 truncate text-base leading-5 text-gray-500">primer: kk-style="dark"</p>
+						</div>
+					</div>
+					<div class=" shrink-0 flex-col sm:items-end mt-4 sm:mt-0">
+						<p class="text-base leading-6 text-gray-900">Opcija odloča če je glavni prikaz temen ali svetel</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+	</main>
+</Layout>

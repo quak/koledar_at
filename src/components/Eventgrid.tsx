@@ -86,7 +86,6 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
     }else{
       res = await getEventsForToday() as any;
       setEvents(res["eventssl"] as Event[]);
-      
     }
   };
 
