@@ -122,13 +122,13 @@ export async function getAfterThisWeek() {
 
 
 export async function getUpcommingThisWeek() {
-    var today = new Date();
+    const currentDate = new Date(); 
+    var today = new Date(currentDate.getTime() + ( 24 * 60 * 60 * 1000));
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0');
     var yyyy = today.getFullYear();
     today = yyyy+"-"+mm+"-"+dd;
 
-    const currentDate = new Date(); 
     var day = currentDate.getDay();
     var lastweekday = new Date(currentDate.getTime() + ( 24 * 60 * 60 * 1000)*(7-day)); //Hokuspokus fidibus
     dd = String(lastweekday.getDate()).padStart(2, '0');

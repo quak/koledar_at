@@ -107,22 +107,41 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
         setLoading(true);
         let res: any = "";
 
+        
+        var today = new Date();
+        var str = "";
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var yyyy = today.getFullYear();
+        str = yyyy+"-"+mm+"-"+dd;
+
+        const currentDate = new Date(); 
+        var day = currentDate.getDay();
+        var nxtweek = "";
+        var lastweekday = new Date(currentDate.getTime() + ( 24 * 60 * 60 * 1000)*(8-day)); //Hokuspokus fidibus
+        console.log(lastweekday);
+        dd = String(lastweekday.getDate()).padStart(2, '0');
+        mm = String(lastweekday.getMonth() + 1).padStart(2, '0'); 
+        yyyy = lastweekday.getFullYear();
+        var nxtweek = yyyy+"-"+mm+"-"+dd;
+
+
         if(searchword !== "" && place !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&locations=${place}&from=2024-01-01&to=2024-05-24`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&locations=${place}&from=2024-01-01&to=${str}`,
           );
         }else
         if(searchword !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&from=2024-01-01&to=2024-05-24`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&q=${searchword}&from=2024-01-01&to=${str}`,
           );
         }else if(place !== ""){
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&locations=${place}&from=2024-01-01&to=2024-05-24`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&limit=3&locations=${place}&from=2024-01-01&to=${str}`,
           );
         }else{
           res = await fetch(
-            `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=2024-05-27&limit=3`,
+            `https://admin.koledar.at/v1/events?&offset=${3 * page}&from=${nxtweek}&limit=3`,
           );
         }
 

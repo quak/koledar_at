@@ -70,15 +70,19 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
         sq=sq+"&locations="+place;
       }
 
+      var today = new Date();
+      var str = "";
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0');
+      var yyyy = today.getFullYear();
+      str = yyyy+"-"+mm+"-"+dd;
+
       res = await fetch(
-        `https://admin.koledar.at/v1/events?&offset=0&limit=30${sq}&from=2024-05-25`,
+        `https://admin.koledar.at/v1/events?&offset=0&limit=30${sq}&from=${str}`,
       );
       const data = (await res.json()) as EventResponse;
-      console.log(data);
       const datae = enhanceData(data.items,locations,organizations);
       setEvents(datae["evsl"]);
-      console.log("events");
-      console.log(events);
     }else{
       res = await getEventsForToday() as any;
       setEvents(res["eventssl"] as Event[]);
