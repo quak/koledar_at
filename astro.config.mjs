@@ -8,8 +8,15 @@ import vercel from "@astrojs/vercel/serverless";
 // https://astro.build/config
 export default defineConfig({
   output: 'server',
+  server: {
+    headers: {
+        "Access-Control-Allow-Origin": "*"
+    }
+  },
   integrations: [react(), tailwind({
     applyBaseStyles: false
   })],
   adapter: vercel()
 });
+
+
