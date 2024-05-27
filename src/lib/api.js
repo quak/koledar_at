@@ -354,7 +354,7 @@ function getOrgas(orgs,kkorganizers) {
  
   let ret = new Array();
 
-  kkorganizers.forEach((orgaslug,i)=>{
+    orgs.forEach((orgaslug,i)=>{
       kkorganizers.forEach((orga,index) => {
          
           if(orgaslug===orga.organizer_key){
@@ -362,6 +362,6 @@ function getOrgas(orgs,kkorganizers) {
           }
       });
   });
-  
+
   return ret;
 }

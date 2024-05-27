@@ -17,7 +17,13 @@ export default defineConfig({
   integrations: [react(), tailwind({
     applyBaseStyles: false
   })],
-  adapter: vercel()
+  adapter: vercel({
+    maxDuration: 150,
+    //isr: {
+    //  bypassToken: "161556d774a8161556d774a8161556d774a8",
+    //  exclude: [ "/", "/kategorije/[...slug]" ]
+    //},
+  })
 });
 
 
