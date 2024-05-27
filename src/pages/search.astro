@@ -22,7 +22,7 @@ const place = Astro.url.searchParams.get('place') || '';
 		
 		<div class="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32">
 			<!-- Content goes here -->
-			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Bodoče prireditve</h2>
+			<h2  id="nextweek" class="text-kkred text-3xl md:text-5xl text-center uppercase font-light mb-12">Aktualne prireditve</h2>
 			<Eventgrid client:load searchword={search} place={place}></Eventgrid>
 
 		</div>
