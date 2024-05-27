@@ -11,7 +11,7 @@ const { event } = Astro.params;
 const eventdata = await getEventforSlug(event);
 
 
-const address = "Kaernten," +eventdata?.loc?.name_de+" , " +eventdata?.loc?.venuename_de;
+const address = "Kaernten," +encodeURIComponent(eventdata?.loc?.name_de)+" , " +encodeURIComponent(eventdata?.loc?.venuename_de);
 
 //const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.post_title+"&details=Event description text&dates=20220305T103000/20220305T184500&location=New York City";
 const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+eventdata.title_sl+"&details="+eventdata.excerpt+"&dates="+eventdata.starting_at+"&location="+address;
@@ -20,6 +20,24 @@ const icallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&te
 const currentPath = "https://www.koledar.at"+Astro.url.pathname;
 let ion = false;
 let wlp = false;
+
+
+console.log(eventdata);
+
+let imglsthumb = eventdata.image_landscape_thumbnail;
+  let imgpthumb = eventdata.image_portrait_thumbnail;
+  let imgthumb = "";
+
+  let eventimg= "";
+
+  if(imglsthumb!=""){
+    imgthumb = imglsthumb;
+    eventimg = eventdata.image_landscape.url;
+  }else{
+    imgthumb = imgpthumb;
+    eventimg = eventdata.image_portrait.url;
+  }
+
 ---
 
 
@@ -80,7 +98,8 @@ let wlp = false;
 		<div class="bg-kklight mx-auto lg:max-w-screen-lg max-w-7xl 2xl:max-w-nov-width pt-8">
 			<div class="flex justify-center">
 				
-                <img src={eventdata.image_portrait_thumbnail}/>
+                
+                <img src={eventimg}/>
 				
 			</div>
 			<div class="p-8 max-w-screen-sm mx-auto font-sans text-xl">

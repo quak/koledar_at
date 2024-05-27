@@ -21,6 +21,7 @@ type Event = {
   datedm: string;
   starting_at: string;
   image_landscape_thumbnail: string;
+  image_landscape: string;
   image_portrait: string;
   image_portrait_thumbnail: string;
   daytext: string;
@@ -59,16 +60,17 @@ export default function Eventcardday({ className, ...props }: TcardProps) {
   }
 
   let imglsthumb = event.image_landscape_thumbnail;
-  let imgls = event.image_portrait;
-
   let imgpthumb = event.image_portrait_thumbnail;
-  let imgp = "";// I DONT KNOW IF WE HAVE ACTUALLY A image_portait field
-  let imgthumb= "";
+  let imgthumb = "";
 
-  if(imglsthumb=""){
-    imgthumb=imglsthumb;
+  let eventimg= "";
+
+  if(imglsthumb!=""){
+    imgthumb = imglsthumb;
+    eventimg = event.image_landscape;
   }else{
-    imgthumb=imgpthumb;
+    imgthumb = imgpthumb;
+    eventimg = event.image_portrait;
   }
 
   return (
