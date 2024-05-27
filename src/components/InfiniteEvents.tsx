@@ -119,7 +119,7 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
         var day = currentDate.getDay();
         var nxtweek = "";
         var lastweekday = new Date(currentDate.getTime() + ( 24 * 60 * 60 * 1000)*(8-day)); //Hokuspokus fidibus
-        console.log(lastweekday);
+     
         dd = String(lastweekday.getDate()).padStart(2, '0');
         mm = String(lastweekday.getMonth() + 1).padStart(2, '0'); 
         yyyy = lastweekday.getFullYear();
@@ -149,7 +149,7 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
         
         const data = (await res.json()) as EventResponse;
         const datae = enhanceData(data.items,locations,organizations);
-        console.log(datae);
+      
         
         setEvents((prev) => [...prev, ...datae["evsl"]]);
         setPage((prev) => prev + 1);

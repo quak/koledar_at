@@ -5,10 +5,7 @@ export async function getEventforSlug(eventkey) {
   
     const response = await fetch("https://admin.koledar.at/v1/events/"+eventkey,
     {
-      method: 'GET',
-      headers: {
-        
-      }
+      method: 'GET'
     });
     let temp = await response.json();
     let kklocations  = (await getAllLocations()).items;
@@ -26,10 +23,7 @@ async function getAllLocations() {
   
   const response = await fetch("https://admin.koledar.at/v1/locations?includeChildren=true&limit=200",
   {
-    method: 'GET',
-    headers: {
-      
-    }
+    method: 'GET'
   });
   return await response.json();
 }
@@ -37,10 +31,7 @@ async function getAllLocations() {
 async function getAllOrganizers() {
   const response = await fetch('https://admin.koledar.at/v1/organizers?offset=0&limit=200',
   {
-    method: 'GET',
-    headers: {
-      
-    }
+    method: 'GET'
   });
   return await response.json();
 }
@@ -48,10 +39,8 @@ async function getAllOrganizers() {
 async function getEventsfromApi(limit) {
   const response = await fetch('https://admin.koledar.at/v1/events?limit='+limit+'&offset=0',
   {
-    method: 'GET',
-    headers: {
-      
-    }
+    method: 'GET'
+    
   });
   return await response.json();
 }
@@ -60,10 +49,7 @@ async function getEventsFromTo(from,to) {
     //https://koledar.at/v1/events?offset=0&from=2024-04-26&limit=20
     const response = await fetch('https://admin.koledar.at/v1/events?&offset=0&from='+from+'&to='+to+'&limit=30',
     {
-        method: 'GET',
-        headers: {
-        
-        }
+        method: 'GET'
     });
     return await response.json();
 }
@@ -76,9 +62,6 @@ async function getEventsFromAndOffset(from,offset) {
     const response = await fetch('https://admin.koledar.at/v1/events?&offset='+offset+'&from='+from+'&limit='+limit,
     {
         method: 'GET',
-        headers: {
-        
-        }
     });
     return await response.json();
 }

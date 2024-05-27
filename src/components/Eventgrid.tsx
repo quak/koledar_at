@@ -95,7 +95,6 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
   }
   
 
-console.log(events);
   let eventssl = [];//events.eventssl;
 
   return (
