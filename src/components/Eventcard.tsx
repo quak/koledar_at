@@ -67,8 +67,8 @@ export default function Eventcard({ className, ...props }: TcardProps) {
         
         <div className="flex flex-row gap-6">
           <div className=" ">
-            <div className="w-18 aspect-square flex justify-center align-center">
-              <span className={`flex flex-col items-center rounded-2xl aspect-square justify-center `+ colorclass} >
+            <div className="w-18 h-18 aspect-square flex justify-center align-center">
+              <span className={`flex flex-col items-center rounded-2xl w-full aspect-square justify-center `+ colorclass} >
                 <span className="text-base uppercase tracking-widest uppercase  text-white font-serif ">{event.daytext}</span>
                 <span className="text-2xl font-medium text-white font-serif">{event.datedm}</span>
               </span>

@@ -26,6 +26,7 @@ type Event = {
   datedm: string;
   starting_at: string;
   image_landscape_thumbnail: string;
+  image_landscape: string;
   image_portrait: string;
   image_portrait_thumbnail: string;
   daytext: string;

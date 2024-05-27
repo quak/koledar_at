@@ -57,7 +57,7 @@ export function CarouselOneLevel() {
 
 
           <CarouselItem key={i} className="pl-4 md:basis-1/2 lg:basis-1/3">
-            <Eventcard event={event} colortheme="orange" className="eventcarditem"  key={i}></Eventcard>
+            <Eventcard event={event} colortheme="" className="eventcarditem"  key={i}></Eventcard>
           
           </CarouselItem>
         ))}
