@@ -36,6 +36,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
     imgthumb = imgpthumb;
     eventimg = eventdata.image_portrait.url;
   }
+  console.log(eventdata);
 ---
 
 
@@ -71,6 +72,13 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 						<p class="flex items-center gap-2 px-8 "><img src="/clock.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata.starting_at}</span></p>
 						<p class="flex items-center gap-2 px-8 "><img src="/location.svg"><span class="text-black uppercase font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loc?.name_sl}</span></p>
 						<p class="flex items-center gap-2 px-8 "><img src="/mylocation.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loc?.venuename_sl}</span></p>
+					</div>
+					<div class="flex flex-col justify-center mt-8">
+						{eventdata.orga.map((org, index) => (
+							<div >
+								<a href={org.web_url} class=" text-center"><span class="text-black  text-xl md:text-2xl text-kkred font-serif">{org.name_sl}</span></p>
+							</div>
+						))}
 					</div>
 				</div>
 				
