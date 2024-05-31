@@ -26,6 +26,7 @@ type Event = {
   image_portrait_thumbnail: string;
   daytext: string;
   loc: Locations;
+  loca: Loco;
 }
 
 type TcardProps = {
@@ -46,6 +47,13 @@ type Locations = {
 
 }
 
+interface Loco {
+  venuename_de: string;
+  venuename_sl: string;
+  name_sl: string;
+  name_de: string;
+}
+
 export default function Eventcardday({ className, ...props }: TcardProps) {
   let event = props.event;
   let colortheme = props.colortheme;
@@ -58,7 +66,7 @@ export default function Eventcardday({ className, ...props }: TcardProps) {
   }else{
     colorclass = "bg-kkgreen"
   }
-console.log(event);
+
   let imglsthumb = event.image_landscape_thumbnail;
   let imgpthumb = event.image_portrait_thumbnail;
   let imgthumb = "";
@@ -105,9 +113,9 @@ console.log(event);
             <div className="flex flex-col">
               <span className="flex gap-4">
                 <span className="text-xl md:text-3xl  font-bold text-kkred font-serif ">{event.starting_at}</span>
-                <p className=" text-xl md:text-3xl uppercase text-kkred font-serif inline-block">{event.loc.name_sl}</p>
+                <p className=" text-xl md:text-3xl uppercase text-kkred font-serif inline-block">{event.loca.name_sl}</p>
               </span>
-              <span><p className="text-2xl text-kkorange font-serif ">{event.loc.venuename_sl}</p></span>
+              <span><p className="text-2xl text-kkorange font-serif ">{event.loca.venuename_sl}</p></span>
             </div>
               
               <span className="hidden md:flex kkwide text-black font-light font-sans text-3xl right-0  items-center top-12">

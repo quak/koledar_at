@@ -18,6 +18,7 @@ const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&te
 const icallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+eventdata.title_sl+"&details="+eventdata.excerpt+"&dates="+eventdata.starting_at+"&location="+address;
 
 const currentPath = "https://www.koledar.at"+Astro.url.pathname;
+
 let ion = false;
 let wlp = false;
 
@@ -31,10 +32,10 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 
   if(imglsthumb!=""){
     imgthumb = imglsthumb;
-    eventimg = eventdata.image_landscape.url;
+    eventimg = eventdata.image_landscape;
   }else{
     imgthumb = imgpthumb;
-    eventimg = eventdata.image_portrait.url;
+    eventimg = eventdata.image_portrait;
   }
 ---
 
@@ -69,8 +70,8 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 					<h1 class=" font-bold text-4xl md:text-6xl mb-8">{eventdata.title_sl}</h1>
 					<div class="flex flex-wrap flex-row justify-center gap-4 mt-4">
 						<p class="flex items-center gap-2 px-8 "><img src="/clock.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata.starting_at}</span></p>
-						<p class="flex items-center gap-2 px-8 "><img src="/location.svg"><span class="text-black uppercase font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loc?.name_sl}</span></p>
-						<p class="flex items-center gap-2 px-8 "><img src="/mylocation.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loc?.venuename_sl}</span></p>
+						<p class="flex items-center gap-2 px-8 "><img src="/location.svg"><span class="text-black uppercase font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.name_sl}</span></p>
+						<p class="flex items-center gap-2 px-8 "><img src="/mylocation.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.venuename_sl}</span></p>
 					</div>
 					<div class="flex flex-col justify-center mt-8">
 						{eventdata.orga.map((org, index) => (
