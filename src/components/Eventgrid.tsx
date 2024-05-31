@@ -66,6 +66,7 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
   const [events, setEvents] = React.useState<Event[]>([]);
   const [locations, setLocations] = React.useState<Locations[]>([]);
   const [organizations, setOrganizations] = React.useState<Organizations[]>([]);
+  const [initcall, setInitcall] =  React.useState(true)
 
 
   const getbase = async () =>{
@@ -98,7 +99,9 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
     }
   };
 
-  if (events.length == 0) {
+  
+  if (initcall) {
+    setInitcall(false);
     getbase();
   }
   
