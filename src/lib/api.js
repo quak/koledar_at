@@ -1,6 +1,8 @@
 import { QrCode } from "lucide-react";
 import React, { useState, useEffect, useRef } from 'react';
 
+
+
 export async function getEventforSlug(eventkey) {
   
     const response = await fetch("https://admin.koledar.at/v1/events/"+eventkey,
@@ -307,7 +309,7 @@ function enhanceData(events,kklocations,kkorganizers){
             event.gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.title_sl+"&dates="+startdategcal+enddategcal;
         }
 
-        event.loc = getLocationforSlug(event.location,event.venue,kklocations);
+        event.loca = getLocationforSlug(event.location,event.venue,kklocations);
         
         event.orga = getOrgas(event.organizers,kkorganizers);
         
@@ -329,7 +331,12 @@ function enhanceData(events,kklocations,kkorganizers){
 }
 
 function getLocationforSlug(locationslug,venueslug,kklocations) {
-  let ret = false;
+    let ret={  
+        venuename_de: "",
+        venuename_sl: "",
+        name_sl: "",
+        name_de: ""
+      };
  
   kklocations.forEach((locobj,index) => {
       
@@ -337,12 +344,14 @@ function getLocationforSlug(locationslug,venueslug,kklocations) {
          
           locobj.venues.forEach((vobj,index) => {
               if(venueslug===vobj.venue_key){
-                  locobj.venuename_de = vobj.name_de;
-                  locobj.venuename_sl = vobj.name_sl;
+                ret.venuename_de = vobj.name_de;
+                ret.venuename_sl = vobj.name_sl;
+                ret.name_de = locobj.name_de;
+                ret.name_sl = locobj.name_sl;
+                
               }
           });
 
-          ret = locobj
       }
   });
 

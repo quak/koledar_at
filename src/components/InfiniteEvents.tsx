@@ -4,6 +4,7 @@ import InfiniteScroll from '@/components/ui/infinite-scroll';
 import { Card, CardContent,CardHeader,CardTitle } from "@/components/ui/card"
 import { Loader2 } from 'lucide-react';
 import Eventcard from "@/components/Eventcard"
+import { any } from 'zod';
 
 interface EventResponse {
   items: Event[];
@@ -40,6 +41,7 @@ type Event = {
   image_portrait_thumbnail: string;
   daytext: string;
   loc: Locations;
+  loca: Loco;
 }
 
 
@@ -60,6 +62,13 @@ interface Organizations {
   title_sl: string;
   venue: string;
   location: string;
+}
+
+interface Loco {
+  venuename_de: string;
+  venuename_sl: string;
+  name_sl: string;
+  name_de: string;
 }
 
 
@@ -180,7 +189,12 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
 
   
   function getLocationforSlug(locationslug,venueslug,kklocations) {
-    let ret = false;
+    let ret:Loco={  
+      venuename_de: "",
+      venuename_sl: "",
+      name_sl: "",
+      name_de: ""
+    };
    
     kklocations.forEach((locobj,index) => {
         
@@ -188,12 +202,16 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
            
             locobj.venues.forEach((vobj,index) => {
                 if(venueslug===vobj.venue_key){
-                    locobj.venuename_de = vobj.name_de;
-                    locobj.venuename_sl = vobj.name_sl;
+                    
+                    ret.venuename_de = vobj.name_de;
+                    ret.venuename_sl = vobj.name_sl;
+                    ret.name_de = locobj.name_de;
+                    ret.name_sl = locobj.name_sl;
+
                 }
             });
   
-            ret = locobj
+            
         }
     });
   
@@ -304,7 +322,7 @@ function InfiniteEvents({ searchword,place }: { searchword: string,place:string 
             event.gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.title_sl+"&dates="+startdategcal+enddategcal;
         }
 
-        event.loc = getLocationforSlug(event.location,event.venue,kklocations);
+        event.loca = getLocationforSlug(event.location,event.venue,kklocations);
         
         event.orga = getOrgas(event.organizers,kkorganizers);
         

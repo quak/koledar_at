@@ -58,7 +58,7 @@ export default function Eventcardday({ className, ...props }: TcardProps) {
   }else{
     colorclass = "bg-kkgreen"
   }
-
+console.log(event);
   let imglsthumb = event.image_landscape_thumbnail;
   let imgpthumb = event.image_portrait_thumbnail;
   let imgthumb = "";
@@ -81,8 +81,12 @@ export default function Eventcardday({ className, ...props }: TcardProps) {
       <CardHeader>
         
         <div className="flex flex-col md:flex-row gap-6">
+
             <span>
+            {imgthumb !=""  &&
               <img className="max-h-56 ease-out duration-4000 transition-all hover:scale-103" src={imgthumb}  loading="lazy" alt={event.title_sl}/>
+            }
+              
             </span>
             <span className="flex items-end">
               <CardTitle className="  font-sans font-bold text-2xl md:text-4xl  line-clamp-5">{event.title_sl}</CardTitle>

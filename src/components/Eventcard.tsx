@@ -25,6 +25,7 @@ type Event = {
   image_portrait_thumbnail: string;
   daytext: string;
   loc: Locations;
+  loca: Loco;
 }
 
 type TcardProps = {
@@ -45,6 +46,13 @@ type Locations = {
 }
 
 
+interface Loco {
+  venuename_de: string;
+  venuename_sl: string;
+  name_sl: string;
+  name_de: string;
+}
+
 export default function Eventcard({ className, ...props }: TcardProps) {
   let event = props.event;
   let colortheme = props.colortheme;
@@ -57,7 +65,7 @@ export default function Eventcard({ className, ...props }: TcardProps) {
   }else{
     colorclass = "bg-kkgreen"
   }
-
+  
   return (
     <a href={url} className=" block border-0 border-b-2 border-kkrose h-full"  >
     <Card className="border-0">
@@ -92,8 +100,8 @@ export default function Eventcard({ className, ...props }: TcardProps) {
         </div>
         <div className="basis-4/5">
           <span className="mb-4 block">
-          <p className=" text-3xl uppercase text-kkred font-serif mb-2">{event.loc.name_sl}</p>
-          <p className="text-2xl text-kkorange font-serif ">{event.loc.venuename_sl}</p>
+          <p className=" text-3xl uppercase text-kkred font-serif mb-2">{event.loca.name_sl}</p>
+          <p className="text-2xl text-kkorange font-serif ">{event.loca.venuename_sl}</p>
           </span>
         </div>
         </div>

@@ -35,7 +35,16 @@ type Event = {
   image_portrait_thumbnail: string;
   daytext: string;
   loc: Locations;
+  loca: Loco;
 }
+
+interface Loco {
+  venuename_de: string;
+  venuename_sl: string;
+  name_sl: string;
+  name_de: string;
+}
+
 
 type ApiResponse = {
   eventssl: Event[],
