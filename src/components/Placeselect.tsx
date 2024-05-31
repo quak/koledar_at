@@ -42,7 +42,7 @@ export function Placeselect() {
   const [locations, setLocations] = React.useState<Locations[]>([]);
   const getbase = async () =>{
     const resloc = await fetch(
-      'https://admin.koledar.at/v1/locations?includeChildren=true&nofront=1',
+      'https://admin.koledar.at/v1/locations?includeChildren=true&nofront=1&limit=200',
     );
     const dataloc = (await resloc.json()) as LocationResponse;
     setLocations(dataloc.items) ;
