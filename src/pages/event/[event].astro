@@ -33,10 +33,13 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
   if(imglsthumb!=""){
     imgthumb = imglsthumb;
     eventimg = eventdata.image_landscape.url;
-  }else{
+  }
+  
+  if(imgpthumb!="") {
     imgthumb = imgpthumb;
     eventimg = eventdata.image_portrait.url;
   }
+  
 ---
 
 
@@ -107,8 +110,8 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
                 
                 
 				{eventimg !=""  &&
-				<img src={eventimg}  loading="lazy" alt={eventdata.title_sl}/>
-			  }
+					<img src={eventimg}  loading="lazy" alt={eventdata.title_sl}/>
+				}
 				
 			</div>
 			<div class="p-8 max-w-screen-sm mx-auto font-sans text-xl">
