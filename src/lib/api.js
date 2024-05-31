@@ -49,7 +49,7 @@ async function getEventsfromApi(limit) {
 
 async function getEventsFromTo(from,to) {
     //https://koledar.at/v1/events?offset=0&from=2024-04-26&limit=20
-    const response = await fetch('https://admin.koledar.at/v1/events?&offset=0&from='+from+'&to='+to+'&limit=30',
+    const response = await fetch('https://admin.koledar.at/v1/events?&offset=0&from='+from+'&to='+to,
     {
         method: 'GET'
     });
