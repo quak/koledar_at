@@ -31,6 +31,7 @@ type Event = {
   image_portrait_thumbnail: string;
   daytext: string;
   loc: Locations;
+  loca: Loco;
 }
 
 type ApiResponse = {
@@ -52,6 +53,13 @@ interface Organizations {
   location: string;
 }
 
+
+interface Loco {
+  venuename_de: string;
+  venuename_sl: string;
+  name_sl: string;
+  name_de: string;
+}
 
  
 function Eventgrid({ searchword,place }: { searchword: string,place:string }) {  
@@ -225,7 +233,12 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
   }
 
   function getLocationforSlug(locationslug,venueslug,kklocations) {
-    let ret = false;
+    let ret:Loco={  
+      venuename_de: "",
+      venuename_sl: "",
+      name_sl: "",
+      name_de: ""
+    };
    
     kklocations.forEach((locobj,index) => {
         
@@ -233,12 +246,14 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
            
             locobj.venues.forEach((vobj,index) => {
                 if(venueslug===vobj.venue_key){
-                    locobj.venuename_de = vobj.name_de;
-                    locobj.venuename_sl = vobj.name_sl;
+                  ret.venuename_de = vobj.name_de;
+                  ret.venuename_sl = vobj.name_sl;
+                  ret.name_de = locobj.name_de;
+                  ret.name_sl = locobj.name_sl;
+
                 }
             });
   
-            ret = locobj
         }
     });
   
