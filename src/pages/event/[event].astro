@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getEventforSlug } from '../../lib/api';
 import Layout from '../../layouts/Layout.astro';
 
@@ -111,7 +112,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
                 
                 
 				{eventimg !=""  &&
-					<img src={eventimg}  loading="lazy" alt={eventdata.title_sl}/>
+					<Image inferSize format="WebP" class="ease-out duration-4000 transition-all hover:scale-103 aspect-video"  src={eventimg} alt={eventdata.title_sl} />
 				}
 				
 			</div>
@@ -123,7 +124,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				<div class="hidden">
 					<span class="uppercase text-lg tracking-widedate text-klopinj-blue font-light">Download</span>
 					<p class="flex items-center gap-4">
-						<img src="/tmpimages/svgs/download.svg">
+						<img src="/download.svg">
 						<a href="/" class="text-3xl px-8 py-2 bg-iskanje-grey rounded-2xl tracking-widerls">PDF</a>
 						<span class="text-xl">Letak prireditve</span>
 					</p>
