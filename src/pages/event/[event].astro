@@ -40,10 +40,11 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
     eventimg = eventdata.image_portrait.url;
   }
   
+  let sharingdescription = eventdata.datedm +" "+eventdata.starting_at +", "+eventdata?.loca?.venuename_sl +" "+eventdata?.loca?.name_sl ;
 ---
 
 
-<Layout title={eventdata.title_sl}>
+<Layout title={eventdata.title_sl} description={sharingdescription}>
 	
 
     <section class="bg-kklight px-1 md:px-4 py-4 md:py-12 ">
