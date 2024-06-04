@@ -60,7 +60,7 @@ export function CarouselOneLevel() {
   return (
     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 my-8 mb-32 mt-4">
 			<h2 id="thisweek" className="hyphens-auto text-kkred text-3xl md:text-5xl text-center uppercase font-light  mb-12">Ta teden</h2>
-    <Carousel className="w-full  overflow-hidden">
+    <Carousel className="w-full">
       <CarouselContent className="-ml-1 ">
       {eventssl.map((event, i) => (
 
