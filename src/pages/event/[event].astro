@@ -52,8 +52,8 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 		<div class="mx-auto lg:max-w-screen-lg max-w-7xl 2xl:max-w-nov-width">
 			<div class="flex flex-col w-full">
 				<div class="flex justify-between relative">
-					<a href="/"><img class="h-20 md:h-36 w-auto aspect-square" src="/logokk.png" alt="Logo koledar Koroških Slovencev"/></a>
-					<a href="/" class=" kkwide text-kkred font-light font-sans text-3xl right-0 flex items-center top-12">
+					<a href="/"><img class="h-20 md:h-36 w-auto aspect-square" src="/logokk.png" alt="Logo koledar Koroških Slovencev" aria-label="Povezava na prvo stran"/></a>
+					<a href="/" class=" kkwide text-kkred font-light font-sans text-3xl right-0 flex items-center top-12" aria-label="Povezava na prvo stran">
 						<span class="inline-block">
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-right" viewBox="0 0 16 16">
 								<path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708"/>
@@ -74,9 +74,9 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				<div class="text-center">
 					<h1 class=" font-bold text-4xl md:text-6xl mb-8">{eventdata.title_sl}</h1>
 					<div class="flex flex-wrap flex-row justify-center gap-4 mt-4">
-						<p class="flex items-center gap-2 px-8 "><img src="/clock.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata.starting_at}</span></p>
-						<p class="flex items-center gap-2 px-8 "><img src="/location.svg"><span class="text-black uppercase font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.name_sl}</span></p>
-						<p class="flex items-center gap-2 px-8 "><img src="/mylocation.svg"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.venuename_sl}</span></p>
+						<p class="flex items-center gap-2 px-8 "><img src="/clock.svg" alt="Ura"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata.starting_at}</span></p>
+						<p class="flex items-center gap-2 px-8 "><img src="/location.svg" alt="Kraj"><span class="text-black uppercase font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.name_sl}</span></p>
+						<p class="flex items-center gap-2 px-8 "><img src="/mylocation.svg" alt="Prireditveni kraj"><span class="text-black font-bold text-2xl md:text-4xl text-kkorange font-serif">{eventdata?.loca?.venuename_sl}</span></p>
 					</div>
 					<div class="flex flex-col justify-center mt-8">
 						{eventdata.orga.map((org, index) => (
@@ -124,7 +124,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				<div class="hidden">
 					<span class="uppercase text-lg tracking-widedate text-klopinj-blue font-light">Download</span>
 					<p class="flex items-center gap-4">
-						<img src="/download.svg">
+						<img src="/download.svg" alt="download">
 						<a href="/" class="text-3xl px-8 py-2 bg-iskanje-grey rounded-2xl tracking-widerls">PDF</a>
 						<span class="text-xl">Letak prireditve</span>
 					</p>
@@ -132,7 +132,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				{ wlp && <div class="mt-4">
 						<span class="uppercase text-lg tracking-widedate text-klopinj-blue font-light">Link</span>
 						<p class="flex items-center gap-4">
-							<img class="hidden sm:block" src="/tmpimages/svgs/link.svg">
+							<img class="hidden sm:block" src="/tmpimages/svgs/link.svg" alt="Eksterna povezava">
 							<a href={eventdata.weblink} class="text-xl sm:text-3xl px-8 py-2 bg-white rounded-2xl  tracking-widerls">{eventdata.weblinkparsed.host}</a>
 						</p>
 					</div>
@@ -141,7 +141,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				{ ion && <div class="mt-4">
 						<span class="uppercase text-lg tracking-widedate text-klopinj-blue font-light">Prireditelj</span>
 						<p class="flex items-center gap-4">
-							<img class="hidden sm:block" src="/tmpimages/svgs/link.svg">
+							<img class="hidden sm:block" src="/tmpimages/svgs/link.svg" alt="Povezava k prireditelju">
 							<a href="/" class="text-xl sm:text-3xl px-8 py-2 bg-white rounded-2xl tracking-widerls">{ eventdata.implodedorganizernamess.join(", ")}</a>
 						</p>
 					</div>
@@ -157,7 +157,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				
 				<a target="_blank" href={gcallink} class="px-4 py-1 bg-white rounded-2xl">
 					<p class="flex items-center gap-4">
-						<img src="/calendar.svg">
+						<img src="/calendar.svg" alt="Koledar google">
 						<img class="hidden sm:block" src="/arrowright.svg">
 						<span class="text-xl">
 							<span class="font-bold uppercase tracking-widedate">Google</span><br>
@@ -169,7 +169,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				<a target="_blank" href={icallink}  class="px-4 py-1 bg-white rounded-2xl hidden">
 					<p class="flex items-center gap-4">
 						<img src="/calendar.svg">
-						<img class="hidden sm:block" src="/arrowright.svg">
+						<img class="hidden sm:block" src="/arrowright.svg" alt="Koledar ical">
 						<span class="text-xl">
 							<span class="font-bold uppercase tracking-widedate">Ical</span><br>
 							<span class="uppercase tracking-widedate">Koledar</span>
@@ -187,7 +187,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 		<div class="mx-auto bg-kklight  lg:max-w-screen-lg max-w-7xl 2xl:max-w-nov-width pt-8">
 			
 			<div class=" flex items-center flex-col overflow-hidden">
-				<img class="h-16" src="/locationblue.svg"/>
+				<img class="h-16" src="/locationblue.svg" alt="Map pin"/>
 				<p class="uppercase text-xl sm:text-4xl text-klopinj-blue font-light tracking-widedate">Kako pridem tja?</p>
 				<span class="bg-white p-4 mt-8 w-72 h-52 sm:w-11/12 sm:h-72 sm:max-h-72 ">
 					<iframe src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`} class="h-full w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
