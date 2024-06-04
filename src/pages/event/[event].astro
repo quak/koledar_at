@@ -10,9 +10,9 @@ import '../../styles/global.css';
 Astro.response.headers.set('Cache-Control', 's-maxage=10800')
 const { event } = Astro.params;
 const eventdata = await getEventforSlug(event);
+console.log(eventdata);
 
-
-const address = "Kaernten," +encodeURIComponent(eventdata?.loc?.name_de)+" , " +encodeURIComponent(eventdata?.loc?.venuename_de);
+const address = "Kaernten," +encodeURIComponent(eventdata?.loca?.address);
 
 //const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.post_title+"&details=Event description text&dates=20220305T103000/20220305T184500&location=New York City";
 const gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+eventdata.title_sl+"&details="+eventdata.excerpt+"&dates="+eventdata.starting_at+"&location="+address;
@@ -81,7 +81,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 					<div class="flex flex-col justify-center mt-8">
 						{eventdata.orga.map((org, index) => (
 							<div >
-								<a href={org.web_url} class=" text-center"><span class="text-black  text-xl md:text-2xl text-kkred font-serif">{org.name_sl}</span></p>
+								<a href={`https://${org.web_url}`} class=" text-center" target="_blank"><span class="text-black  text-xl md:text-2xl text-kkred font-serif">{org.name_sl}</span></p>
 							</div>
 						))}
 					</div>
@@ -157,8 +157,8 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				
 				<a target="_blank" href={gcallink} class="px-4 py-1 bg-white rounded-2xl">
 					<p class="flex items-center gap-4">
-						<img src="/calendar.svg" alt="Koledar google">
-						<img class="hidden sm:block" src="/arrowright.svg">
+						<img src="/calendar.svg" alt="Koledar google"/>
+						<img class="hidden sm:block" src="/arrowright.svg" alt="Puščica na desno"/>
 						<span class="text-xl">
 							<span class="font-bold uppercase tracking-widedate">Google</span><br>
 							<span class="uppercase tracking-widedate">Koledar</span>
@@ -190,7 +190,7 @@ let imglsthumb = eventdata.image_landscape_thumbnail;
 				<img class="h-16" src="/locationblue.svg" alt="Map pin"/>
 				<p class="uppercase text-xl sm:text-4xl text-klopinj-blue font-light tracking-widedate">Kako pridem tja?</p>
 				<span class="bg-white p-4 mt-8 w-72 h-52 sm:w-11/12 sm:h-72 sm:max-h-72 ">
-					<iframe src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`} class="h-full w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+					<iframe title="Prireditveni kraj" src={`https://www.google.com/maps/embed/v1/place?q=${address}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8`} class="h-full w-full" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 				</span>
 			</div>
 

@@ -335,7 +335,8 @@ function getLocationforSlug(locationslug,venueslug,kklocations) {
         venuename_de: "",
         venuename_sl: "",
         name_sl: "",
-        name_de: ""
+        name_de: "",
+        address: "",
       };
  
   kklocations.forEach((locobj,index) => {
@@ -348,6 +349,8 @@ function getLocationforSlug(locationslug,venueslug,kklocations) {
                 ret.venuename_sl = vobj.name_sl;
                 ret.name_de = locobj.name_de;
                 ret.name_sl = locobj.name_sl;
+                ret.address = vobj.address;
+                
                 
               }
           });
