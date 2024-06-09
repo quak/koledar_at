@@ -214,7 +214,7 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
             event.gcallink = "https://calendar.google.com/calendar/render?action=TEMPLATE&text="+event.title_sl+"&dates="+startdategcal+enddategcal;
         }
 
-        event.loc = getLocationforSlug(event.location,event.venue,kklocations);
+        event.loca = getLocationforSlug(event.location,event.venue,kklocations);
         
         event.orga = getOrgas(event.organizers,kkorganizers);
         
@@ -236,6 +236,7 @@ function Eventgrid({ searchword,place }: { searchword: string,place:string }) {
   }
 
   function getLocationforSlug(locationslug,venueslug,kklocations) {
+
     let ret:Loco={  
       venuename_de: "",
       venuename_sl: "",
